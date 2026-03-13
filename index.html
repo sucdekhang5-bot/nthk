@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khung Form Ảnh Video Đẹp</title>
+
+  <style>
+    :root {
+      --bg: #0b1220;
+      --card: rgba(255, 255, 255, 0.08);
+      --card-2: rgba(255, 255, 255, 0.12);
+      --accent: #79c7ff;
+      --text: #e7eef7;
+      --muted: rgba(231, 238, 247, 0.72);
+      --radius: 18px;
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+      --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+    }
+
+    .page {
+      width: min(1000px, 92vw);
+      display: grid;
+      gap: 30px;
+      grid-template-columns: 1fr;
+      padding: 32px;
+    }
+
+    .header {
+      text-align: center;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: clamp(2.05rem, 3vw, 2.9rem);
+      letter-spacing: 0.03em;
+      color: var(--text);
+    }
+
+    .header p {
+      max-width: 620px;
+      margin: 12px auto 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 26px;
+    }
+
+    .card--form {
+      grid-column: 1 / -1;
+    }
+
+    .card {
+      border-radius: 14px;
+      overflow: hidden;
+      background: rgba(15, 18, 25, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+      display: flex;
+      flex-direction: column;
+      min-height: 520px;
+      transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.45);
+    }
+
+    .card__media {
+      height: 220px;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .card--video {
+      grid-column: 1 / -1;
+      min-height: 520px;
+    }
+
+    .card--video .card__media {
+      height: 100%;
+      border-bottom: none;
+    }
+
+    .card__media img,
+    .card__media video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+
+    .card__body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      flex: 1;
+    }
+
+    .card__body h2 {
+      margin: 0;
+      font-size: 1.35rem;
+      letter-spacing: 0.02em;
+    }
+
+    .card__body p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .form-group {
+      display: grid;
+      gap: 14px;
+    }
+
+    .form-group label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(0, 0, 0, 0.25);
+      color: var(--text);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 120ms ease, box-shadow 120ms ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .btn {
+      align-self: start;
+      padding: 12px 20px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      background: #79c7ff;
+      color: #07121d;
+    }
+
+    .btn:hover {
+      opacity: 0.95;
+    }
+
+    @media (max-width: 520px) {
+      .card {
+        min-height: auto;
+      }
+    }
+
+    .contact {
+      padding: 32px 24px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(7, 14, 26, 0.88), rgba(15, 18, 25, 0.92));
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text);
+      display: grid;
+      gap: 20px;
+      text-align: center;
+    }
+
+    .contact h2 {
+      margin: 0;
+      font-size: 1.7rem;
+      letter-spacing: 0.02em;
+    }
+
+    .contact p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .contact-item {
+      padding: 18px 16px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      text-align: left;
+    }
+
+    .contact-item__icon {
+      font-size: 1.6rem;
+      line-height: 1;
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: rgba(121, 199, 255, 0.15);
+      color: var(--accent);
+    }
+
+    .contact-item__info {
+      flex: 1;
+    }
+
+    .contact-item__title {
+      margin: 0 0 6px;
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .contact-item__link {
+      color: var(--accent);
+      text-decoration: none;
+      word-break: break-word;
+    }
+
+    .contact-item__link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="header">
+      <h1>NTHK Mobile</h1>
+      <p>
+        Chúng tôi còn bán khô gà đè tem của anh BỘ PICI, mọi người ủng hộ qua phần liên hệ cuối trang.
+      </p>
+    </header>
+
+    <section class="card-grid">
+      <!-- Card Ảnh 1 -->
+      <article class="card">
+        <div class="card__media">
+          <img
+            src="https://fdn.gsmarena.com/imgroot/news/25/10/redmagic-11-pro-plus-launched/inline/-1200/gsmarena_001.jpg"
+            alt="Điện thoại thông minh"
+          />
+        </div>
+        <div class="card__body">
+          <h2>Red Magic 11 Pro Plus</h2>
+          <p>
+            Hiệu năng đỉnh cao với chip Snapdragon 8 Elite Gen 5, màn hình vô khuyết,...
+          </p>
+          <a class="btn" href="https://mobilecity.vn/dien-thoai/zte-nubia-red-magic-11-pro-plus.html" target="_blank" rel="noopener">Xem chi tiết</a>
+        </div>
+      </article>
+
+      <!-- Card Ảnh 2 -->
+      <article class="card">
+        <div class="card__media">
+          <img
+            src="https://consumer.huawei.com/dam/content/dam/huawei-cbg-site/common/mkt/pdp/phones/mate-xt-ultimate-design/images/hero/highlight-01.jpg"
+            alt="Điện thoại màu trắng"
+          />
+        </div>
+        <div class="card__body">
+          <h2>  Huawei Mate XT Ultimate</h2>
+          <p>
+            Màn hình gập 3 đầu tiên, siêu mỏng, phù hợp cho việc giải trí và làm việc mọi lúc,...
+          </p>
+          <a class="btn" href="https://consumer.huawei.com/en/phones/mate-xt-ultimate-design/specs/" target="_blank" rel="noopener">Xem chi tiết</a>
+        </div>
+      </article>
+
+      <!-- Card Ảnh 3 -->
+      <article class="card">
+        <div class="card__media">
+          <img
+            src="https://www.techenet.com/wp-content/uploads/2024/09/Xiaomi-15-Ultra-3-1200x675.webp"
+            alt="Điện thoại màu đen"
+          />
+        </div>
+        <div class="card__body">
+          <h2>Xiaomi 15 Ultra</h2>
+          <p>
+            Hiệu năng mạnh mẽ, camera tuyệt vời và thiết kế sang trọng cho người dùng chụp ảnh chuyên nghiệp,...
+          </p>
+          <a class="btn" href="https://mobilecity.vn/dien-thoai/xiaomi-15-ultra-5g.html" target="_blank" rel="noopener">Xem chi tiết</a>
+        </div>
+      </article>
+
+      <!-- Card Video -->
+      <article class="card card--video">
+        <div class="card__media">
+          <iframe
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/qe5dJCRWifo?autoplay=1&mute=1&loop=1&playlist=qe5dJCRWifo"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </article>
+
+      <!-- Card Form -->
+      <article class="card card--form">
+        <div class="card__body">
+        <h2>Đặt hàng</h2>
+          <p>Điền thông tin đơn hàng và chúng tôi sẽ gọi xác nhận trong 24 giờ.</p>
+
+          <form class="form-group" onsubmit="event.preventDefault(); alert('Đơn hàng đã gửi! Chúng tôi sẽ gọi lại sớm.');">
+            <label for="name">Họ & Tên</label>
+            <input id="name" type="text" placeholder="Nguyễn Văn A" required />
+
+            <label for="phone">Số điện thoại</label>
+            <input id="phone" type="tel" placeholder="0123456789" required />
+
+            <label for="model">Model</label>
+            <input id="model" type="text" placeholder="iPhone 17 Pro Max / Galaxy S25 Ultra" required />
+
+            <label for="color">Màu sắc</label>
+            <input id="color" type="text" placeholder="Đen / Bạc / Xanh" required />
+
+            <label for="quantity">Số lượng</label>
+            <input id="quantity" type="number" min="1" value="1" required />
+
+            <button class="btn" type="submit">Đặt hàng</button>
+          </form>
+        </div>
+      </article>
+    </section>
+
+    <section class="contact">
+      <h2>Liên hệ</h2>
+      <p>Nếu bạn cần hỗ trợ hoặc muốn đặt hàng nhanh, hãy liên hệ qua các kênh sau:</p>
+
+      <div class="contact-grid">
+        <div class="contact-item">
+          <div class="contact-item__icon">📧</div>
+          <div class="contact-item__info">
+            <p class="contact-item__title">Email</p>
+            <a class="contact-item__link" href="mailto:support@nhtk-mobile.vn">support@nhtk-mobile.vn</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-item__icon">📞</div>
+          <div class="contact-item__info">
+            <p class="contact-item__title">Hotline</p>
+            <a class="contact-item__link" href="tel:+84901234567">090 123 4567</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-item__icon">💬</div>
+          <div class="contact-item__info">
+            <p class="contact-item__title">Zalo</p>
+            <a class="contact-item__link" href="https://zalo.me/0901234567" target="_blank" rel="noopener">090 123 4567</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
