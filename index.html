@@ -102,6 +102,10 @@
       border-bottom: none;
     }
 
+    .card--specs {
+      grid-column: 1 / -1;
+    }
+
     .card__media img,
     .card__media video {
       width: 100%;
@@ -253,6 +257,90 @@
     .contact-item__link:hover {
       text-decoration: underline;
     }
+
+    .spec-table table {
+      width: 100%;
+      border-collapse: collapse;
+      border-spacing: 0;
+      font-size: 0.95rem;
+    }
+
+    .spec-table th,
+    .spec-table td {
+      padding: 10px 12px;
+      vertical-align: top;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .spec-table th {
+      width: 160px;
+      color: var(--text);
+      font-weight: 700;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .spec-table td {
+      color: var(--muted);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+      line-height: 1.5;
+    }
+
+    .spec-table tr:last-child td,
+    .spec-table tr:last-child th {
+      border-bottom: none;
+    }
+
+    @media (max-width: 768px) {
+      .spec-table table {
+        font-size: 0.85rem;
+      }
+
+      .spec-table th,
+      .spec-table td {
+        padding: 8px 10px;
+      }
+
+      .spec-table th {
+        width: 120px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .spec-table table {
+        font-size: 0.8rem;
+      }
+
+      .spec-table th,
+      .spec-table td {
+        padding: 6px 8px;
+      }
+
+      .spec-table th {
+        width: 100px;
+        display: block;
+        margin-bottom: 4px;
+        font-weight: 600;
+      }
+
+      .spec-table td {
+        display: block;
+        padding-left: 0;
+        padding-top: 0;
+        margin-bottom: 12px;
+      }
+
+      .spec-table tr {
+        display: block;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding-bottom: 12px;
+        margin-bottom: 12px;
+      }
+
+      .spec-table tr:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -328,6 +416,80 @@
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
           ></iframe>
+        </div>
+      </article>
+
+      <!-- Card Specs -->
+      <article class="card card--specs">
+        <div class="card__body">
+          <h2>Thông số kỹ thuật</h2>
+          <div class="spec-table">
+            <table>
+              <tbody>
+                <tr>
+                  <th>Màn hình</th>
+                  <td>
+                    AMOLED, 1 tỷ màu, 144Hz, 2592Hz PWM, 2000 nits (peak)<br />
+                    6.85 inches, 1.5K (1216 x 2688 pixels)<br />
+                    Mật độ điểm ảnh ~431 ppi
+                  </td>
+                </tr>
+                <tr>
+                  <th>Hệ điều hành</th>
+                  <td>Android 16, Redmagic OS 11</td>
+                </tr>
+                <tr>
+                  <th>Camera sau</th>
+                  <td>
+                    50 MP, f/1.9 (góc rộng), 1/1.55", PDAF, OIS<br />
+                    50 MP, f/2.2 (góc siêu rộng), 1/2.88", 0.61µm<br />
+                    2 MP, f/2.4 (macro)<br />
+                    Quay phim: 8K@30fps, 4K@30/60fps, 1080p@30/60/120/240fps
+                  </td>
+                </tr>
+                <tr>
+                  <th>Camera trước</th>
+                  <td>16 MP, f/2.0 (góc rộng) ẩn dưới màn hình<br />Quay phim: 1080p@30/60fps</td>
+                </tr>
+                <tr>
+                  <th>CPU</th>
+                  <td>Qualcomm SM8850-AC Snapdragon 8 Elite Gen 5 (3 nm)<br />
+                    8 nhân (2x4.6 GHz & 6x3.62 GHz)<br />GPU: Adreno 840
+                  </td>
+                </tr>
+                <tr>
+                  <th>RAM</th>
+                  <td>12-24GB, LPDDR5X</td>
+                </tr>
+                <tr>
+                  <th>Bộ nhớ trong</th>
+                  <td>256GB-1TB, UFS 4.1 Pro</td>
+                </tr>
+                <tr>
+                  <th>Thẻ SIM</th>
+                  <td>2 SIM Nano</td>
+                </tr>
+                <tr>
+                  <th>Dung lượng pin</th>
+                  <td>
+                    Si/C Li-ion Si/C 7500 mAh<br />
+                    Sạc nhanh 120W<br />
+                    Sạc không dây 80W
+                  </td>
+                </tr>
+                <tr>
+                  <th>Thiết kế</th>
+                  <td>
+                    Khung nhôm phẳng, 2 mặt kính phẳng<br />
+                    Cảm biến vân tay siêu âm dưới màn hình<br />
+                    Hệ thống tản nhiệt (quạt gió + chất lỏng)<br />
+                    Hỗ trợ trigger cảm ứng (520Hz)<br />
+                    Kháng nước, bụi IPX8
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </article>
 
